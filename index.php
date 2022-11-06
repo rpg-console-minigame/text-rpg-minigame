@@ -1,5 +1,9 @@
 <?php
 include 'controllers/console_controller.php';
+include 'configs\configs.php';
+if (!isset($_COOKIE["posicion"])){
+    setcookie("posicion", serialize($posicionInicial), time() + 3600);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +18,26 @@ include 'controllers/console_controller.php';
 
 <body>
     <form action="" method="post">
+        <div id="info">
+        <div class="container">
+                <div class="console">
+                    <div class="console-head">
+                        <div class="console-title">Info</div>
+                        <div class="console-actions">
+                            <div class="console-action console-action-min"><span class="fa fa-caret-down"></span></div>
+                            <div class="console-action console-action-max"><span class="fa fa-arrows-alt"></span></div>
+                            <div class="console-action console-action-close"><span class="fa fa-close"></span></div>
+                        </div>
+                    </div>
+                    <div class="console-body">
+
+                        <div class="console-text">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="console">
             <div class="container">
                 <div class="console">

@@ -1,12 +1,17 @@
 <?php
+$posicionInicial = array(
+    'nivel' => "l1",
+    'zona' => "z1"
+);
 $map = array(
     "l1" => array(
         "z1" => array(
             'vacio' => false,
+            'name' => "Zona 1",
             'enemigos' => array(
             ),
             'puertas' => array(
-                "N" => true,
+                "N" => false,
                 "S" => false,
                 "E" => false,
                 "W" => true,
@@ -14,6 +19,7 @@ $map = array(
         ),
         "z2" => array(
             'vacio' => false,
+            'name' => "Zona 2",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -25,6 +31,7 @@ $map = array(
         ),
         "z3" => array(
             'vacio' => false,
+            'name' => "Zona 3",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -41,6 +48,7 @@ $map = array(
         ),
         "z2" => array(
             'vacio' => false,
+            'name' => "Zona 4",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -52,6 +60,7 @@ $map = array(
         ),
         "z3" => array(
             'vacio' => false,
+            'name' => "Zona 5",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -68,6 +77,7 @@ $map = array(
         ),
         "z2" => array(
             'vacio' => false,
+            'name' => "Zona 6",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -81,6 +91,7 @@ $map = array(
     "l4" => array(
         "z1" => array(
             "vacio" => false,
+            'name' => "Zona 7",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -92,6 +103,7 @@ $map = array(
         ),
         "z2" => array(
             'vacio' => false,
+            'name' => "Zona 8",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -103,6 +115,7 @@ $map = array(
         ),
         "z3" => array(
             'vacio' => false,
+            'name' => "Zona 9",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -114,6 +127,7 @@ $map = array(
         ),
         "z4" => array(
             'vacio' => false,
+            'name' => "Zona 10",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -127,6 +141,7 @@ $map = array(
     "l5" => array(
         "z1" => array(
             'vacio' => false,
+            'name' => "Zona 11",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -138,6 +153,7 @@ $map = array(
         ),
         "z2" => array(
             'vacio' => false,
+            'name' => "Zona 12",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -149,6 +165,7 @@ $map = array(
         ),
         "z3" => array(
             'vacio' => false,
+            'name' => "Zona 13",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -160,6 +177,7 @@ $map = array(
         ),
         "z4" => array(
             'vacio' => false,
+            'name' => "Zona 14",
             'enemigos' => array(
             ),
             'puertas' => array(

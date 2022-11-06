@@ -9,13 +9,11 @@ html {
   }
   
   body {
-    background-color: #647a94;
-    height: 100vh;
+    background-color: #647a94
   }
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  #console {
+    position: absolute;
+    left: 45%;
   }
   .console {
     max-width: 720px;
@@ -102,4 +100,8 @@ html {
     100% {
       opacity: 0;
     }
+  }
+  #info{
+    position: absolute;
+    left: 5%;
   }
