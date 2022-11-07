@@ -1,10 +1,12 @@
 <?php 
+
 $text = array();
 if (isset($_POST["textConsole"])){
     if(isset($_COOKIE["text"])){
         $text = unserialize($_COOKIE["text"]);
+        $textInterpretado = interpretarText($_POST["textConsole"]);
         array_push($text, ">".$_POST["textConsole"]);
-        array_push($text, interpretarText($_POST["textConsole"]));
+        array_push($text, $textInterpretado);
 
         if(count($text) > 3){
             unset($text[0]);
@@ -15,9 +17,17 @@ if (isset($_POST["textConsole"])){
     }
     else{
         array_push($text, ">".$_POST["textConsole"]);
-        array_push($text, interpretarText($_POST["textConsole"]));
+        $textInterpretado = interpretarText($_POST["textConsole"]);
+        array_push($text, $textInterpretado);
         setcookie("text", serialize($text), time() + 3600);
     }
+    if($_POST["textConsole"]== "walk north" || $_POST["textConsole"]== "walk south" || $_POST["textConsole"]== "walk east" || $_POST["textConsole"]== "walk west"){
+        echo "<script>location.href='index.php'</script>";
+    }
+}
+if (!isset($_COOKIE["posicion"])){
+    include_once "configs/configs.php";
+    setcookie("posicion", serialize($posicionInicial), time() + 3600);
 }
 function interpretarText($textAInterpretar){
     include_once "configs/configs.php";
@@ -44,7 +54,7 @@ function interpretarText($textAInterpretar){
             if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["N"])==true){
                 $posicion["nivel"] = "l".((int)substr($posicion["nivel"],1)-1);
                 setcookie("posicion", serialize($posicion), time() + 3600);
-                return "Has entrado en la sala ".$posicion["nivel"].$posicion["zona"];
+                return "Has entrado en la sala ".$map[$posicion["nivel"]][$posicion["zona"]]["name"];
             }
             else return "No hay puerta en esa direccion";
         case "walk south":
@@ -52,7 +62,7 @@ function interpretarText($textAInterpretar){
             if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["S"])==true){
                 $posicion["nivel"] = "l".((int)substr($posicion["nivel"],1)+1);
                 setcookie("posicion", serialize($posicion), time() + 3600);
-                return "Has entrado en la sala ".$posicion["nivel"].$posicion["zona"];
+                return "Has entrado en la sala ".$map[$posicion["nivel"]][$posicion["zona"]]["name"];
             }
             else return "No hay puerta en esa direccion";
         case "walk east":
@@ -60,7 +70,7 @@ function interpretarText($textAInterpretar){
             if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["E"])==true){
                 $posicion["zona"] = "z".((int)substr($posicion["zona"],1)-1);
                 setcookie("posicion", serialize($posicion), time() + 3600);
-                return "Has entrado en la sala ".$posicion["nivel"].$posicion["zona"];
+                return "Has entrado en la sala ".$map[$posicion["nivel"]][$posicion["zona"]]["name"];
             }
             else return "No hay puerta en esa direccion";
         case "walk west":
@@ -68,7 +78,7 @@ function interpretarText($textAInterpretar){
             if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["W"])==true){
                 $posicion["zona"] = "z".((int)substr($posicion["zona"],1)+1);
                 setcookie("posicion", serialize($posicion), time() + 3600);
-                return "Has entrado en la sala ".$posicion["nivel"].$posicion["zona"];
+                return "Has entrado en la sala ".$map[$posicion["nivel"]][$posicion["zona"]]["name"];
             }
             else return "No hay puerta en esa direccion";
         default:

@@ -1,9 +1,6 @@
 <?php
 include 'controllers/console_controller.php';
 include 'configs\configs.php';
-if (!isset($_COOKIE["posicion"])){
-    setcookie("posicion", serialize($posicionInicial), time() + 3600);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +27,12 @@ if (!isset($_COOKIE["posicion"])){
                         </div>
                     </div>
                     <div class="console-body">
-
                         <div class="console-text">
-                            
+                            <?php 
+                            if (!isset($_COOKIE["posicion"])) echo "<script>location.href='index.php'</script>";
+                            $posicion = unserialize($_COOKIE["posicion"]); ?>
+                            <h2><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["name"]; ?></h2>
+                            <p><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["descripcion"]; ?></p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@ if (!isset($_COOKIE["posicion"])){
                             <?php foreach ($text as $t)
                                 echo "<p>$t</p>"; ?>
                             user@PC:~$
-                            <input id="console-input" type="text" placeholder="Enter command" name="textConsole">
+                            <input id="console-input" type="text" placeholder="Enter command" name="textConsole" autocomplete="off">
                             <span class="console-input">_</span>
                         </div>
                     </div>

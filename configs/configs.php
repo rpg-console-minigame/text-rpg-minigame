@@ -7,7 +7,8 @@ $map = array(
     "l1" => array(
         "z1" => array(
             'vacio' => false,
-            'name' => "Zona 1",
+            'name' => "sala Initia",
+            'descripcion' => "sala de inicio",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -20,6 +21,7 @@ $map = array(
         "z2" => array(
             'vacio' => false,
             'name' => "Zona 2",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -32,6 +34,7 @@ $map = array(
         "z3" => array(
             'vacio' => false,
             'name' => "Zona 3",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -49,6 +52,7 @@ $map = array(
         "z2" => array(
             'vacio' => false,
             'name' => "Zona 4",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -61,6 +65,7 @@ $map = array(
         "z3" => array(
             'vacio' => false,
             'name' => "Zona 5",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -78,6 +83,7 @@ $map = array(
         "z2" => array(
             'vacio' => false,
             'name' => "Zona 6",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -92,6 +98,7 @@ $map = array(
         "z1" => array(
             "vacio" => false,
             'name' => "Zona 7",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -104,6 +111,7 @@ $map = array(
         "z2" => array(
             'vacio' => false,
             'name' => "Zona 8",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -116,6 +124,7 @@ $map = array(
         "z3" => array(
             'vacio' => false,
             'name' => "Zona 9",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -128,6 +137,7 @@ $map = array(
         "z4" => array(
             'vacio' => false,
             'name' => "Zona 10",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -142,6 +152,7 @@ $map = array(
         "z1" => array(
             'vacio' => false,
             'name' => "Zona 11",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -154,6 +165,7 @@ $map = array(
         "z2" => array(
             'vacio' => false,
             'name' => "Zona 12",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -166,6 +178,7 @@ $map = array(
         "z3" => array(
             'vacio' => false,
             'name' => "Zona 13",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
@@ -178,6 +191,7 @@ $map = array(
         "z4" => array(
             'vacio' => false,
             'name' => "Zona 14",
+            'descripcion' => "loremp ipsum",
             'enemigos' => array(
             ),
             'puertas' => array(
