@@ -37,24 +37,17 @@ if (isset($_COOKIE["inventario"])) {
                             $posicion = unserialize($_COOKIE["posicion"]); ?>
                             <h2><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["name"]; ?></h2>
                             <p><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["descripcion"]; ?></p>
-<<<<<<< HEAD
-                            <?php 
-                            if(isset ($map[$posicion["nivel"]][$posicion["zona"]]['items'])){
-                                echo "<h2>Items</h2>";
-                                foreach ($map[$posicion["nivel"]][$posicion["zona"]]['items'] as $item) {
-                                    //comprobar si el item esta cogido
-                                    $cogido = false;
-                                    foreach ($inventory as $itemInv) {
-                                        if ($itemInv->__getName() == $item->__getName()) {
-                                            $cogido = true;
-                                        }
+                            <?php
+                                //mostrar items en la zona
+                                if (isset($map[$posicion["nivel"]][$posicion["zona"]]["items"])) {
+                                    echo "<h3>Items</h3>";
+                                    echo "<ul>";
+                                    foreach ($map[$posicion["nivel"]][$posicion["zona"]]["items"] as $item) {
+                                        echo "<p>".$item->__getName()."</p>";
                                     }
-                                    if($cogido = false)echo "<p>".$item->__getName()."</p>";
+                                    echo "</ul>";
                                 }
-                            }
                             ?>
-=======
->>>>>>> parent of 8944f96 (items y armas)
                         </div>
                     </div>
                 </div>
