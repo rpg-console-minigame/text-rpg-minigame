@@ -33,6 +33,14 @@ include 'configs\configs.php';
                             $posicion = unserialize($_COOKIE["posicion"]); ?>
                             <h2><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["name"]; ?></h2>
                             <p><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["descripcion"]; ?></p>
+                            <?php 
+                            if(isset ($map[$posicion["nivel"]][$posicion["zona"]]['items'])){
+                                echo "<h2>Items</h2>";
+                                foreach ($map[$posicion["nivel"]][$posicion["zona"]]['items'] as $item) {
+                                    echo "<p>".$item->__getName()."</p>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 <?php
+include_once 'models\items.php';
 $posicionInicial = array(
     'nivel' => "l1",
     'zona' => "z1"
@@ -9,6 +10,16 @@ $map = array(
             'vacio' => false,
             'name' => "sala Initia",
             'descripcion' => "sala de inicio",
+            'items' => array(
+                new arma(
+                    'pistola rota',
+                    'puede utilizarse como último recurso, puede explotar en las manos',
+                    'arma de fuego',
+                    'ataca a distancia con una probabilidad de acertar del 50% en distancias cortas',
+                    1,10,1,5,
+                    'imgs\items\1.png'
+                ),
+            ),
             'enemigos' => array(
             ),
             'puertas' => array(
