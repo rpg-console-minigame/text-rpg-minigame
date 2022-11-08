@@ -8,6 +8,7 @@ class item{
     public $precio;
     public $id;
     public $icon;
+
     public function __construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id,$icon){
         $this->name = $name;
         $this->descripcion = $descripcion;
@@ -18,8 +19,30 @@ class item{
         $this->id = $id;
         $this->icon = $icon;
     }
+    //crear todos los getters
     public function __getName(){
         return $this->name;
+    }
+    public function __getDescripcion(){
+        return $this->descripcion;
+    }
+    public function __getTipo(){
+        return $this->tipo;
+    }
+    public function __getEfecto(){
+        return $this->efecto;
+    }
+    public function __getCantidad(){
+        return $this->cantidad;
+    }
+    public function __getPrecio(){
+        return $this->precio;
+    }
+    public function __getId(){
+        return $this->id;
+    }
+    public function __getIcon(){
+        return $this->icon;
     }
 }
 class arma extends item{
@@ -27,6 +50,10 @@ class arma extends item{
     public function __construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id,$icon, $damage){
         parent::__construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id,$icon);
         $this->damage = $damage;
+    }
+    //crear todos los getters
+    public function __getDamage(){
+        return $this->damage;
     }
 }
 ?>

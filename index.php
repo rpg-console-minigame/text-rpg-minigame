@@ -1,6 +1,10 @@
 <?php
 include 'controllers/console_controller.php';
 include 'configs\configs.php';
+$inventory = array();
+if (isset($_COOKIE["inventario"])) {
+    $inventory = unserialize($_COOKIE["inventario"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +41,14 @@ include 'configs\configs.php';
                             if(isset ($map[$posicion["nivel"]][$posicion["zona"]]['items'])){
                                 echo "<h2>Items</h2>";
                                 foreach ($map[$posicion["nivel"]][$posicion["zona"]]['items'] as $item) {
-                                    echo "<p>".$item->__getName()."</p>";
+                                    //comprobar si el item esta cogido
+                                    $cogido = false;
+                                    foreach ($inventory as $itemInv) {
+                                        if ($itemInv->__getName() == $item->__getName()) {
+                                            $cogido = true;
+                                        }
+                                    }
+                                    if($cogido = false)echo "<p>".$item->__getName()."</p>";
                                 }
                             }
                             ?>
