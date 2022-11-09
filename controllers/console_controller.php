@@ -36,17 +36,17 @@ function interpretarText($textAInterpretar)
         $item = substr($textAInterpretar, 5);
         if (isset($map[$posicion["nivel"]][$posicion["zona"]]["items"])) {
             foreach ($map[$posicion["nivel"]][$posicion["zona"]]["items"] as $itemMap) {
-                
+
                 if ($itemMap->__getName() == $item) {
                     $inventory = array();
                     if (isset($_COOKIE["inventory"])) {
                         $inventory = unserialize($_COOKIE["inventory"]);
                     }
-                    if(!in_array($itemMap, $inventory)){
+                    if (!in_array($itemMap, $inventory)) {
                         array_push($inventory, $itemMap);
                         setcookie("inventory", serialize($inventory), time() + 3600);
                         return "Has cogido " . $itemMap->__getName();
-                    }else{
+                    } else {
                         return "Ya tienes " . $itemMap->__getName();
                     }
                 }
@@ -60,7 +60,9 @@ function interpretarText($textAInterpretar)
             map: Muestra el mapa <br>
             help: Muestra la ayuda <br>
             walk: ir a otra sala<br>
-            take (item): coger un item";
+            take (item): coger un item <br>
+            inventory: Muestra el inventario
+            ";
             case "map":
                 echo "<script>
             let w = 720;
@@ -112,7 +114,13 @@ function interpretarText($textAInterpretar)
                     return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else
                     return "No hay puerta en esa direccion";
-
+            case "inventory":
+                echo "<script>
+            let w = 720;
+            let h = 700;
+            let map = window.open(\"inventory.php\", \"popup\", \"width=\" + w + \",height=\" + h);
+            </script>";
+                return "inventario abierto";
             default:
                 return "Comando no reconocido, para mas informacion escriba help";
 
