@@ -1,10 +1,7 @@
 <?php
 include 'controllers/console_controller.php';
 include 'configs\configs.php';
-$inventory = array();
-if (isset($_COOKIE["inventario"])) {
-    $inventory = unserialize($_COOKIE["inventario"]);
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +29,7 @@ if (isset($_COOKIE["inventario"])) {
                     </div>
                     <div class="console-body">
                         <div class="console-text">
-                            <?php 
+                            <?php
                             if (!isset($_COOKIE["posicion"])) echo "<script>location.href='index.php'</script>";
                             $posicion = unserialize($_COOKIE["posicion"]); ?>
                             <h2><?php echo $map[$posicion["nivel"]][$posicion["zona"]]["name"]; ?></h2>
@@ -43,7 +40,15 @@ if (isset($_COOKIE["inventario"])) {
                                     echo "<h3>Items</h3>";
                                     echo "<ul>";
                                     foreach ($map[$posicion["nivel"]][$posicion["zona"]]["items"] as $item) {
-                                        echo "<p>".$item->__getName()."</p>";
+                                        //inventario
+                                        $inventory = array();
+                                        if (isset($_COOKIE["inventario"])) {
+                                            $inventory = unserialize($_COOKIE["inventario"]);
+                                        }
+                                        if (!in_array($item, $inventory)) {
+                                            echo "<li>" . $item->__getName() . "</li>";
+                                        }
+                                        
                                     }
                                     echo "</ul>";
                                 }

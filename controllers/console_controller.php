@@ -36,29 +36,19 @@ function interpretarText($textAInterpretar)
         $item = substr($textAInterpretar, 5);
         if (isset($map[$posicion["nivel"]][$posicion["zona"]]["items"])) {
             foreach ($map[$posicion["nivel"]][$posicion["zona"]]["items"] as $itemMap) {
+                
                 if ($itemMap->__getName() == $item) {
-                    //añadir item al inventario si no esta ya
-                    if (!isset($_COOKIE["inventario"])) {
-                        $inventario = array();
-                        array_push($inventario, $itemMap);
-                        setcookie("inventario", serialize($inventario), time() + 3600);
-                    } else {
-                        $inventario = unserialize($_COOKIE["inventario"]);
-                        $esta = false;
-                        foreach ($inventario as $itemInv) {
-                            if ($itemInv->__getName() == $itemMap->__getName()) {
-                                $esta = true;
-                                return "Ya tienes el item " . $itemMap->__getName();
-                            }
-                        }
-                        if (!$esta) {
-                            array_push($inventario, $itemMap);
-                            setcookie("inventario", serialize($inventario), time() + 3600);
-                            //setear item a taken
-                            return "Has cogido el item " . $itemMap->__getName();
-                        }
+                    $inventory = array();
+                    if (isset($_COOKIE["inventory"])) {
+                        $inventory = unserialize($_COOKIE["inventory"]);
                     }
-                    break;
+                    if(!in_array($itemMap, $inventory)){
+                        array_push($inventory, $itemMap);
+                        setcookie("inventory", serialize($inventory), time() + 3600);
+                        return "Has cogido " . $itemMap->__getName();
+                    }else{
+                        return "Ya tienes " . $itemMap->__getName();
+                    }
                 }
             }
         }

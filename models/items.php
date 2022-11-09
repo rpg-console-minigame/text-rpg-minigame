@@ -19,7 +19,7 @@ class item{
         $this->id = $id;
         $this->icon = $icon;
     }
-    //crear todos los getters
+    //getters
     public function __getName(){
         return $this->name;
     }
@@ -44,6 +44,7 @@ class item{
     public function __getIcon(){
         return $this->icon;
     }
+    
 }
 class arma extends item{
     public $damage;
