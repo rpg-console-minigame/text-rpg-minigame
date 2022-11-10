@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
 html{
     cursor: url("https://cdn.custom-cursor.com/db/4732/32/arrow2699.png"), auto;
+    background-image: url("https://media.giphy.com/media/xUNd9ZLpLVKk3nQZeU/giphy.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .gradient-border {
     color: white;
     --borderWidth: 3px;
-    background: #1D1F20;
+    background: #1d1f20ec;
     position: relative;
     border-radius: var(--borderWidth);
 }
