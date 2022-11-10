@@ -122,7 +122,12 @@ function interpretarText($textAInterpretar)
             let map = window.open(\"inventory.php\", \"popup\", \"width=\" + w + \",height=\" + h);
             </script>";
                 return "inventario abierto";
-            case $adminPass." asd";
+            case $adminPass." help":
+                return "
+            itemadd: añade todos los items creados <br>
+            itemremove: elimina todos los items creados <br>";
+
+            case $adminPass." itemadd";
                 $inventory = array();
                 foreach ($map as $nivel) {
                     foreach ($nivel as $zona) {
@@ -135,6 +140,9 @@ function interpretarText($textAInterpretar)
                 }
                 setcookie("inventory", serialize($inventory), time() + 3600);
                 return "añadidos todos los items";
+            case $adminPass." itemremove";
+                setcookie("inventory", serialize(array()), time() + 0);
+                return "eliminados todos los items";
             default:
                 return "Comando no reconocido, para mas informacion escriba help";
 
