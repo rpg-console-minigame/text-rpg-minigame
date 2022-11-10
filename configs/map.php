@@ -5,7 +5,7 @@
                 'vacio' => false,
                 'name' => "sala Initia",
                 'descripcion' => "sala de inicio",
-                'items' => array(new arma("pistola rota", "usar solo en caso de emergencia, puede explotar", "arma", "mata al enemigo si está cerca con un 50% de probabilidad de acertar", 1, 12, 1, "imgs/items/1.png", 10),
+                'items' => array(new arma("pistola rota", "usar solo en caso de emergencia, puede explotar", "arma", "mata al enemigo si está cerca con un 50% de probabilidad de acertar", 1, 12, 1, "imgs/items/pistola_rota.png", 10),
                 ),
                 'enemigos' => array(
                 ),
@@ -33,6 +33,9 @@
                 'vacio' => false,
                 'name' => "Zona 3",
                 'descripcion' => "loremp ipsum",
+                'items' => array(
+                    new comida("pildora extraña","parece que te puede curar algunos daños","comida","cura 10 de vida",1,4,101,"imgs\items\pildora_extrana.png",2),
+                ),
                 'enemigos' => array(
                 ),
                 'puertas' => array(

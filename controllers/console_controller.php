@@ -56,11 +56,12 @@ function interpretarText($textAInterpretar)
     } else
         switch ($textAInterpretar) {
             case "help":
+                $posicion = unserialize($_COOKIE["posicion"]);
                 return "
             map: Muestra el mapa <br>
             help: Muestra la ayuda <br>
             walk: ir a otra sala<br>
-            take (item): coger un item <br>
+            ".(isset($map[$posicion["nivel"]][$posicion["zona"]]["items"]) ? "take (item): coger un item <br>" : "")."
             inventory: Muestra el inventario
             ";
             case "map":
@@ -121,6 +122,19 @@ function interpretarText($textAInterpretar)
             let map = window.open(\"inventory.php\", \"popup\", \"width=\" + w + \",height=\" + h);
             </script>";
                 return "inventario abierto";
+            case $adminPass." asd";
+                $inventory = array();
+                foreach ($map as $nivel) {
+                    foreach ($nivel as $zona) {
+                        if (isset($zona["items"])) {
+                            foreach ($zona["items"] as $item) {
+                                array_push($inventory, $item);
+                            }
+                        }
+                    }
+                }
+                setcookie("inventory", serialize($inventory), time() + 3600);
+                return "añadidos todos los items";
             default:
                 return "Comando no reconocido, para mas informacion escriba help";
 
