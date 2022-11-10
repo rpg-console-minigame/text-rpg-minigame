@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
-
+html{
+    cursor: url("https://cdn.custom-cursor.com/db/4732/32/arrow2699.png"), auto;
+}
 .gradient-border {
     color: white;
     --borderWidth: 3px;
