@@ -1,4 +1,6 @@
 <?php
+include("models/items/arma.php");
+include("models/items/comida.php");
 class item
 {
     public $name;
@@ -55,19 +57,5 @@ class item
         return $this->icon;
     }
 
-}
-class arma extends item
-{
-    public $damage;
-    public function __construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id, $icon, $damage)
-    {
-        parent::__construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id, $icon);
-        $this->damage = $damage;
-    }
-    //crear todos los getters
-    public function __getDamage()
-    {
-        return $this->damage;
-    }
 }
 ?>
