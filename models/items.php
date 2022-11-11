@@ -3,14 +3,14 @@ include("models/items/arma.php");
 include("models/items/comida.php");
 class item
 {
-    private $name;
-    private $descripcion;
-    private $tipo;
-    private $efecto;
-    private $cantidad;
-    private $precio;
-    private $id;
-    private $icon;
+    private $name; //nombre del item
+    private $descripcion; //descripcion del item
+    private $tipo; //tipo de item, puede ser comida, arma. Se añadiran mas en el futuro
+    private $efecto; //descripción del uso del item
+    private $cantidad; //cantidad de items que hay, utilizada para los usos del item (ejemplo: un objeto "puñado de pildoras", se podra usar varias veces ya que hay varias)
+    private $precio; //precio del item
+    private $id; //id del item, si es arma, del 1 al 100, si es comida, del 101 al 200
+    private $icon; //icono del item
 
     public function __construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id, $icon)
     {

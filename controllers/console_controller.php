@@ -28,21 +28,26 @@ if (!isset($_COOKIE["posicion"])) {
     include_once "configs/configs.php";
     setcookie("posicion", serialize($posicionInicial), time() + 3600);
 }
-function interpretarText($textAInterpretar)
+function interpretarText($textAInterpretar) 
 {
+    /**
+     * @param $textAInterpretar string texto a interpretar por la consola, insertado por el usuario
+     * @return string texto interpretado por la consola, mostrado en la pantalla
+     * switch para interpretar el texto introducido por el usuario
+     */
     include_once "configs/configs.php";
-    if (strpos($textAInterpretar, 'take') !== false) {
-        $posicion = unserialize($_COOKIE["posicion"]);
-        $item = substr($textAInterpretar, 5);
-        if (isset($map[$posicion["nivel"]][$posicion["zona"]]["items"])) {
-            foreach ($map[$posicion["nivel"]][$posicion["zona"]]["items"] as $itemMap) {
+    if (strpos($textAInterpretar, 'take') !== false) { //si el texto contiene la palabra take, no se puede insertar en el switch ya que solo sabemos la primera parte del texto a interpretar
+        $posicion = unserialize($_COOKIE["posicion"]); //obtenemos la posicion del jugador
+        $item = substr($textAInterpretar, 5); //obtenemos el nombre del item a coger
+        if (isset($map[$posicion["nivel"]][$posicion["zona"]]["items"])) { //si hay items en la sala
+            foreach ($map[$posicion["nivel"]][$posicion["zona"]]["items"] as $itemMap) { //recorremos los items de la sala para encontrar alguno con ese nombre
 
                 if ($itemMap->__getName() == $item) {
                     $inventory = array();
-                    if (isset($_COOKIE["inventory"])) {
+                    if (isset($_COOKIE["inventory"])) { //si el jugador tiene algun item en el inventario, asi evitamos reescribir la cookie
                         $inventory = unserialize($_COOKIE["inventory"]);
                     }
-                    if (!in_array($itemMap, $inventory)) {
+                    if (!in_array($itemMap, $inventory)) { //si el item no esta en el inventario
                         array_push($inventory, $itemMap);
                         setcookie("inventory", serialize($inventory), time() + 3600);
                         return "Has cogido " . $itemMap->__getName();
@@ -55,7 +60,7 @@ function interpretarText($textAInterpretar)
         return "No existe el item " . $item;
     } else
         switch ($textAInterpretar) {
-            case "help":
+            case "help": //muestra los comandos disponibles
                 $posicion = unserialize($_COOKIE["posicion"]);
                 return "
             map: Muestra el mapa <br>
@@ -64,70 +69,70 @@ function interpretarText($textAInterpretar)
             ".(isset($map[$posicion["nivel"]][$posicion["zona"]]["items"]) ? "take (item): coger un item <br>" : "")."
             inventory: Muestra el inventario
             ";
-            case "map":
+            case "map": //muestra el mapa en un popup generado con javascript
                 echo "<script>
             let w = 720;
             let h = 700;
             let map = window.open(\"map.php\", \"popup\", \"width=\" + w + \",height=\" + h);
             </script>";
                 return "mapa abierto";
-            case "walk":
+            case "walk": //muestra las puertas para moverse
                 $text = "¿A donde quieres ir? comandos: walk ";
                 $posicion = unserialize($_COOKIE["posicion"]);
-                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["N"]) == true)
+                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["N"]) == true) //si hay puerta norte, al ser el primero, nunca va a tener delante una coma
                     $text .= "north";
                 if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["S"]) == true)
-                    $text .= ($text != "¿A donde quieres ir? comandos: walk " ? ", " : "") . "south";
+                    $text .= ($text != "¿A donde quieres ir? comandos: walk " ? ", " : "") . "south"; //si el texto no es el inicial, añade una coma
                 if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["E"]) == true)
-                    $text .= ($text != "¿A donde quieres ir? comandos: walk " ? ", " : "") . "east";
+                    $text .= ($text != "¿A donde quieres ir? comandos: walk " ? ", " : "") . "east"; //si el texto no es el inicial, añade una coma
                 if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["W"]) == true)
-                    $text .= ($text != "¿A donde quieres ir? comandos: walk " ? ", " : "") . "west";
-                return $text;
-            case "walk north":
+                    $text .= ($text != "¿A donde quieres ir? comandos: walk " ? ", " : "") . "west"; //si el texto no es el inicial, añade una coma
+                return $text; //devuelve el texto
+            case "walk north": //moverse al norte
                 $posicion = unserialize($_COOKIE["posicion"]);
-                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["N"]) == true) {
+                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["N"]) == true) { //si hay puerta norte
                     $posicion["nivel"] = "l" . ((int) substr($posicion["nivel"], 1) - 1);
-                    setcookie("posicion", serialize($posicion), time() + 3600);
+                    setcookie("posicion", serialize($posicion), time() + 3600); //guarda la nueva posicion
                     return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else
-                    return "No hay puerta en esa direccion";
-            case "walk south":
+                    return "No hay puerta en esa direccion"; //si no hay puerta en esa direccion
+            case "walk south": //moverse al sur
                 $posicion = unserialize($_COOKIE["posicion"]);
-                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["S"]) == true) {
+                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["S"]) == true) { //si hay puerta sur
                     $posicion["nivel"] = "l" . ((int) substr($posicion["nivel"], 1) + 1);
                     setcookie("posicion", serialize($posicion), time() + 3600);
                     return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else
-                    return "No hay puerta en esa direccion";
-            case "walk east":
+                    return "No hay puerta en esa direccion"; //si no hay puerta en esa direccion
+            case "walk east": //moverse al este
                 $posicion = unserialize($_COOKIE["posicion"]);
-                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["E"]) == true) {
+                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["E"]) == true) { //si hay puerta este
                     $posicion["zona"] = "z" . ((int) substr($posicion["zona"], 1) - 1);
                     setcookie("posicion", serialize($posicion), time() + 3600);
                     return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else
-                    return "No hay puerta en esa direccion";
-            case "walk west":
+                    return "No hay puerta en esa direccion"; //si no hay puerta en esa direccion
+            case "walk west": //moverse al oeste
                 $posicion = unserialize($_COOKIE["posicion"]);
-                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["W"]) == true) {
+                if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["W"]) == true) { //si hay puerta oeste
                     $posicion["zona"] = "z" . ((int) substr($posicion["zona"], 1) + 1);
                     setcookie("posicion", serialize($posicion), time() + 3600);
                     return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
-                } else
+                } else //si no hay puerta en esa direccion
                     return "No hay puerta en esa direccion";
-            case "inventory":
+            case "inventory": //muestra el inventario en un popup generado con javascript
                 echo "<script>
             let w = 720;
             let h = 700;
             let map = window.open(\"inventory.php\", \"popup\", \"width=\" + w + \",height=\" + h);
             </script>";
                 return "inventario abierto";
-            case $adminPass." help":
+            case $adminPass." help": //muestra los comandos disponibles para el admin, escribiendo antes la contraseña de admin escrita en configs/config.php
                 return "
             itemadd: añade todos los items creados <br>
             itemremove: elimina todos los items creados <br>";
 
-            case $adminPass." itemadd";
+            case $adminPass." itemadd"; //añade todos los items creados
                 $inventory = array();
                 foreach ($map as $nivel) {
                     foreach ($nivel as $zona) {
@@ -140,12 +145,13 @@ function interpretarText($textAInterpretar)
                 }
                 setcookie("inventory", serialize($inventory), time() + 3600);
                 return "añadidos todos los items";
-            case $adminPass." itemremove";
+            case $adminPass." itemremove"; //elimina todos los items creados
                 setcookie("inventory", serialize(array()), time() + 0);
                 return "eliminados todos los items";
-            default:
+            default: //si no se ha introducido ningun comando valido
                 return "Comando no reconocido, para mas informacion escriba help";
 
         }
 }
+
 ?>

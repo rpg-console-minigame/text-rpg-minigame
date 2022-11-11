@@ -1,5 +1,5 @@
 <?php
-    class enemy{
+    class enemy{ //todavia sin usar
         private $nombre;
         private $chat;
         private $probabilidad; //del 1 al 100

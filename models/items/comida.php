@@ -1,6 +1,6 @@
 <?php 
     class comida extends item {
-        public $vida;
+        public $vida; //vida que recupera
         public function __construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id, $icon, $vida)
         {
             parent::__construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id, $icon);

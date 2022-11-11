@@ -1,15 +1,16 @@
 <?php 
-    $map = array(
+    $map = array( //array de arrays, cada l es una altura del mapa (eje y) y cada z es una zona dentro de esa altura (eje x)
         "l1" => array(
             "z1" => array(
-                'vacio' => false,
-                'name' => "sala Initia",
-                'descripcion' => "sala de inicio",
-                'items' => array(new arma("pistola rota", "usar solo en caso de emergencia, puede explotar", "arma", "mata al enemigo si está cerca con un 50% de probabilidad de acertar", 1, 12, 1, "imgs/items/pistola_rota.png", 10),
+                'vacio' => false, //si es true, no hay nada en esa zona, es vecesario para colocar bien la posicion x
+                'name' => "sala Initia", //nombre de la sala
+                'descripcion' => "sala de inicio", //descripcion de la sala
+                'items' => array( //array de items que hay en la sala
+                    new arma("pistola rota", "usar solo en caso de emergencia, puede explotar", "arma", "mata al enemigo si está cerca con un 50% de probabilidad de acertar", 1, 12, 1, "imgs/items/pistola_rota.png", 50),
                 ),
-                'enemigos' => array(
+                'enemigos' => array(// array de enemigos que hay en la sala
                 ),
-                'puertas' => array(
+                'puertas' => array( //array de puertas que hay en la sala, true si hay puerta, false si no, recordar que la piesta de la habitacion contigua tambien debe estar abierta
                     "N" => false,
                     "S" => false,
                     "E" => false,
