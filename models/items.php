@@ -3,14 +3,14 @@ include("models/items/arma.php");
 include("models/items/comida.php");
 class item
 {
-    public $name;
-    public $descripcion;
-    public $tipo;
-    public $efecto;
-    public $cantidad;
-    public $precio;
-    public $id;
-    public $icon;
+    private $name;
+    private $descripcion;
+    private $tipo;
+    private $efecto;
+    private $cantidad;
+    private $precio;
+    private $id;
+    private $icon;
 
     public function __construct($name, $descripcion, $tipo, $efecto, $cantidad, $precio, $id, $icon)
     {

@@ -6,4 +6,5 @@ $posicionInicial = array( //posicion inicial del jugador
     'nivel' => "l1",
     'zona' => "z1"
 );
+$vida = 5; //vida inicial del jugador
 ?>
