@@ -21,8 +21,6 @@
                 'vacio' => false,
                 'name' => "Zona 2",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => false,
@@ -36,8 +34,6 @@
                 'descripcion' => "loremp ipsum",
                 'items' => array(
                     new comida("pildora extraña","parece que te puede curar algunos daños","comida","cura 10 de vida",1,4,101,"imgs\items\pildora_extrana.png",2),
-                ),
-                'enemigos' => array(
                 ),
                 'puertas' => array(
                     "N" => false,
@@ -55,8 +51,6 @@
                 'vacio' => false,
                 'name' => "Zona 4",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => true,
@@ -68,8 +62,6 @@
                 'vacio' => false,
                 'name' => "Zona 5",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => true,
                     "S" => false,
@@ -86,8 +78,6 @@
                 'vacio' => false,
                 'name' => "Zona 6",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => true,
                     "S" => true,
@@ -101,8 +91,6 @@
                 "vacio" => false,
                 'name' => "Zona 7",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => false,
@@ -114,8 +102,6 @@
                 'vacio' => false,
                 'name' => "Zona 8",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => true,
                     "S" => false,
@@ -127,8 +113,6 @@
                 'vacio' => false,
                 'name' => "Zona 9",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => false,
@@ -140,8 +124,6 @@
                 'vacio' => false,
                 'name' => "Zona 10",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => true,
@@ -155,8 +137,6 @@
                 'vacio' => false,
                 'name' => "Zona 11",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => false,
@@ -168,8 +148,6 @@
                 'vacio' => false,
                 'name' => "Zona 12",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => false,
@@ -181,8 +159,6 @@
                 'vacio' => false,
                 'name' => "Zona 13",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => false,
                     "S" => false,
@@ -194,8 +170,6 @@
                 'vacio' => false,
                 'name' => "Zona 14",
                 'descripcion' => "loremp ipsum",
-                'enemigos' => array(
-                ),
                 'puertas' => array(
                     "N" => true,
                     "S" => false,

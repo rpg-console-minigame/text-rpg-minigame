@@ -93,7 +93,11 @@ function interpretarText($textAInterpretar)
                 if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["N"]) == true) { //si hay puerta norte
                     $posicion["nivel"] = "l" . ((int) substr($posicion["nivel"], 1) - 1);
                     setcookie("posicion", serialize($posicion), time() + 3600); //guarda la nueva posicion
-                    return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
+                    //comprobar si hay algún en enemigos
+                    if (isset($map[$posicion["nivel"]][$posicion["zona"]]["enemigos"])) {
+                        combate();
+                    }
+                    else return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else
                     return "No hay puerta en esa direccion"; //si no hay puerta en esa direccion
             case "walk south": //moverse al sur
@@ -101,7 +105,11 @@ function interpretarText($textAInterpretar)
                 if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["S"]) == true) { //si hay puerta sur
                     $posicion["nivel"] = "l" . ((int) substr($posicion["nivel"], 1) + 1);
                     setcookie("posicion", serialize($posicion), time() + 3600);
-                    return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
+                    //comprobar si hay algún en enemigos
+                    if (isset($map[$posicion["nivel"]][$posicion["zona"]]["enemigos"])) {
+                        combate();
+                    }
+                    else return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else
                     return "No hay puerta en esa direccion"; //si no hay puerta en esa direccion
             case "walk east": //moverse al este
@@ -117,7 +125,11 @@ function interpretarText($textAInterpretar)
                 if (($map[$posicion["nivel"]][$posicion["zona"]]["puertas"]["W"]) == true) { //si hay puerta oeste
                     $posicion["zona"] = "z" . ((int) substr($posicion["zona"], 1) + 1);
                     setcookie("posicion", serialize($posicion), time() + 3600);
-                    return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
+                    //comprobar si hay algon en enemigos
+                    if (isset($map[$posicion["nivel"]][$posicion["zona"]]["enemigos"])) {
+                        combate();
+                    }
+                    else return "Has entrado en la sala " . $map[$posicion["nivel"]][$posicion["zona"]]["name"];
                 } else //si no hay puerta en esa direccion
                     return "No hay puerta en esa direccion";
             case "inventory": //muestra el inventario en un popup generado con javascript
@@ -152,6 +164,10 @@ function interpretarText($textAInterpretar)
                 return "Comando no reconocido, para mas informacion escriba help";
 
         }
+}
+function combate() {
+    header('Location: '.'combat.php');
+    die();
 }
 
 ?>
