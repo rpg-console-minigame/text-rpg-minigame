@@ -1,4 +1,8 @@
 <?php
+// if (!isset($_COOKIE["user"])){
+// header("Location: login.php");
+// }
+// else{
 include 'controllers/console_controller.php';
 include 'configs\configs.php';
 if (!isset($_COOKIE["vida"])){
@@ -94,3 +98,6 @@ if (!isset($_COOKIE["vida"])){
 </body>
 
 </html>
+<?php
+//}
+?>
